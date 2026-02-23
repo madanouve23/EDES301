@@ -46,6 +46,8 @@ Error conditions: None
 # NOTE - Add import statements to allow access to Python library functions
 # NOTE - Hint:  Look at  https://docs.python.org/3/library/operator.html
 import operator
+import Adafruit_BBIO.GPIO as GPIO
+import time
 
 # ------------------------------------------------------------------------
 # Constants
@@ -57,4 +59,53 @@ import operator
 # Global variables
 # ------------------------------------------------------------------------
 
-# NOTE - No global variables are needed for this example
+# NOTE - Define the target LED to let blink
+LED = "USR3"
+
+# ------------------------------------------------------------------------
+# Functions
+# ------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------
+# Main script
+# ------------------------------------------------------------------------
+
+# NOTE - The python variable "__name__" is provided by the language and can 
+# NOTE - be used to determine how the file is being executed.  For example,
+# NOTE - if the program is being executed on the command line:
+# NOTE -   python3 simple_calc.py
+# NOTE - then the "__name__" will be the string:  "__main__".  If the file 
+# NOTE - is being imported into another python file:
+# NOTE -   import simple_calc
+# NOTE - the the "__name__" will be the module name, i.e. the string "simple_calc"
+
+if __name__ == "__main__":
+
+    # NOTE - Total Period = 1 second/5 cycles = 0.2 seconds per cycle
+    # NOTE - Assuming equal time on and off, we can calculate delays as such:
+    # NOTE - On time = 0.2 seconds/2 = 0.1 seconds
+    # NOTE - Off time = 0.2 seconds/2 = 0.1 seconds
+
+    while True:
+        # Setup the pin as an output
+        GPIO.setup(LED, GPIO.OUT)
+    
+        print("Blinking USR3 at 5Hz. Press Ctrl+C to stop.")
+        
+        try:
+            while True:
+                # Turn LED ON
+                GPIO.output(LED, GPIO.HIGH)
+                time.sleep(0.1)
+                
+                # Turn LED OFF
+                GPIO.output(LED, GPIO.LOW)
+                time.sleep(0.1)
+                
+        except KeyboardInterrupt:
+            # Clean up GPIO settings on exit
+            GPIO.cleanup()
+            print("Exiting and cleaning up.")
+            break
+        break
+    
