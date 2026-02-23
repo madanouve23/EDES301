@@ -91,20 +91,29 @@ operators = {
 # Functions
 # ------------------------------------------------------------------------
 
+# Handles differences in input functions between Python 2 and Python 3
+try:
+    # Python 2
+    input = raw_input
+except NameError:
+    # Python 3
+    pass
+
 def get_user_input():
     """ Get input from the user.
         Returns tuple:  (number, number, function) or 
                         (None, None, None) if inputs invalid
     """
-    # NOTE - Use "try"/"except" statements to allow code to handle errors gracefully.      
+    # NOTE - Use "try"/"except" statements to allow code to handle errors gracefully.  
+    
     try:
         # NOTE - Use "pass" statements to allow code to be run without having to 
         # NOTE - fill out the contents.  This pass statement should be removed    
-        number1 = float(raw_input("Enter first number: "))
-        number2 = float(raw_input("Enter second number: "))
+        number1 = float(input("Enter first number: "))
+        number2 = float(input("Enter second number: "))
         op = input("Enter function (valid values are +, -, *, /, >>, <<, %, **):")
 
-        if (op == ">>" || op == "<<"):
+        if (op == ">>" or op == "<<"):
             number1 = int(number1)
             number2 = int(number2)
 
@@ -152,4 +161,3 @@ if __name__ == "__main__":
             break
         
         print(func(num1, num2))
-
