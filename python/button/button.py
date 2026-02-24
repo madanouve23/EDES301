@@ -3,7 +3,7 @@
 Button Driver
 --------------------------------------------------------------------------
 License:   
-Copyright 2021-2026 - <Your Name>
+Copyright 2021-2026 - Adam Vuong
 
 Redistribution and use in source and binary forms, with or without 
 modification, are permitted provided that the following conditions are met:
@@ -157,7 +157,7 @@ class Button():
         # Initialize Button
         # HW#4 TODO: (one line of code)
         #   Remove "pass" and use the Adafruit_BBIO.GPIO library to set up the button
-        pass
+        GPIO.setup("P2_2", GPIO.IN)
 
     # End def
 
@@ -170,8 +170,8 @@ class Button():
         """
         # HW#4 TODO: (one line of code)
         #   Remove "pass" and return the comparison of input value of the GPIO pin of 
-        #   the buton (i.e. self.pin) to the "pressed value" of the class 
-        pass
+        #   the button (i.e. self.pin) to the "pressed value" of the class 
+        return GPIO.input(self.pin) == 0
 
     # End def
 
@@ -199,7 +199,7 @@ class Button():
         #   of the class (i.e. we are executing the while loop while the 
         #   button is not being pressed)
         #
-        while(False):
+        while(GPIO.input(self.pin) == 1):
         
             if self.unpressed_callback is not None:
                 self.unpressed_callback_value = self.unpressed_callback()
@@ -222,7 +222,7 @@ class Button():
         #   of the class (i.e. we are executing the while loop while the 
         #   button is being pressed)
         #
-        while(False):
+        while(GPIO.input(self.pin) == 0):
         
             if self.pressed_callback is not None:
                 self.pressed_callback_value = self.pressed_callback()
@@ -259,7 +259,7 @@ class Button():
     # -----------------------------------------------------
 
     def set_pressed_callback(self, function):
-        """ Function excuted every "sleep_time" while the button is pressed """
+        """ Function executed every "sleep_time" while the button is pressed """
         self.pressed_callback = function
     
     # End def
@@ -271,7 +271,7 @@ class Button():
     # End def
     
     def set_unpressed_callback(self, function):
-        """ Function excuted every "sleep_time" while the button is unpressed """
+        """ Function executed every "sleep_time" while the button is unpressed """
         self.unpressed_callback = function
     
     # End def
@@ -283,7 +283,7 @@ class Button():
     # End def
 
     def set_on_press_callback(self, function):
-        """ Function excuted once when the button is pressed """
+        """ Function executed once when the button is pressed """
         self.on_press_callback = function
     
     # End def
@@ -295,7 +295,7 @@ class Button():
     # End def
 
     def set_on_release_callback(self, function):
-        """ Function excuted once when the button is released """
+        """ Function executed once when the button is released """
         self.on_release_callback = function
     
     # End def
@@ -318,7 +318,7 @@ if __name__ == '__main__':
 
     print("Button Test")
 
-    # Create instantiation of the button
+    # Create an instantiation of the button
     button = Button("P2_2")
     
     # Create functions to test the callback functions
