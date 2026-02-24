@@ -4,7 +4,7 @@
 Simple Calculator
 --------------------------------------------------------------------------
 License:   
-Copyright 2026 - <NAME>
+Copyright 2026 - Adam Vuong
 
 Redistribution and use in source and binary forms, with or without 
 modification, are permitted provided that the following conditions are met:
@@ -101,7 +101,7 @@ except NameError:
 
 def get_user_input():
     """ Get input from the user.
-        Returns tuple:  (number, number, function) or 
+        Returns a tuple:  (number, number, function) or 
                         (None, None, None) if inputs invalid
     """
     # NOTE - Use "try"/"except" statements to allow code to handle errors gracefully.  
@@ -139,16 +139,16 @@ def get_user_input():
 # NOTE - if the program is being executed on the command line:
 # NOTE -   python3 simple_calc.py
 # NOTE - then the "__name__" will be the string:  "__main__".  If the file 
-# NOTE - is being imported into another python file:
+# NOTE - is being imported into another Python file:
 # NOTE -   import simple_calc
-# NOTE - the the "__name__" will be the module name, i.e. the string "simple_calc"
+# NOTE - the "__name__" will be the module name, i.e., the string "simple_calc"
 
 if __name__ == "__main__":
 
     # NOTE - Need to add main calculator functionality:
     # NOTE -   - Use a loop construct to repeat the operation
-    # NOTE -   - Get the input from the user (i.e. use function created above)    
-    # NOTE -   - Check that all inputs are valid (exit the program if inputs invalid)
+    # NOTE -   - Get the input from the user (i.e., usethe  function created above)    
+    # NOTE -   - Check that all inputs are valid (exit the program if inputs are invalid)
     # NOTE -   - Execute the function on the numbers and print the results
 
     # NOTE - Use "pass" statements to allow code to be run without having to 
