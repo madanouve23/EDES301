@@ -4,7 +4,7 @@
 Blinking USR3 LED
 --------------------------------------------------------------------------
 License:   
-Copyright 2026 - <NAME>
+Copyright 2026 - Adam Vuong
 
 Redistribution and use in source and binary forms, with or without 
 modification, are permitted provided that the following conditions are met:
@@ -75,9 +75,9 @@ LED = "USR3"
 # NOTE - if the program is being executed on the command line:
 # NOTE -   python3 simple_calc.py
 # NOTE - then the "__name__" will be the string:  "__main__".  If the file 
-# NOTE - is being imported into another python file:
+# NOTE - is being imported into another Python file:
 # NOTE -   import simple_calc
-# NOTE - the the "__name__" will be the module name, i.e. the string "simple_calc"
+# NOTE - the "__name__" will be the module name, i.e., the string "simple_calc"
 
 if __name__ == "__main__":
 
@@ -90,7 +90,7 @@ if __name__ == "__main__":
         # Setup the pin as an output
         GPIO.setup(LED, GPIO.OUT)
     
-        print("Blinking USR3 at 5Hz. Press Ctrl+C to stop.")
+        print("Blinking USR3 LED on PocketBeagle at 5Hz. Press Ctrl+C to stop.")
         
         try:
             while True:
@@ -105,7 +105,7 @@ if __name__ == "__main__":
         except KeyboardInterrupt:
             # Clean up GPIO settings on exit
             GPIO.cleanup()
-            print("Exiting and cleaning up.")
+            print("Exiting.")
             break
         break
     
